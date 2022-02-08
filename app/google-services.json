@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "296371796370",
+    "project_id": "d-education-world",
+    "storage_bucket": "d-education-world.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:296371796370:android:0e6cc9a32e03a97ed3294b",
+        "android_client_info": {
+          "package_name": "com.example.educational3dworld"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "296371796370-28b42hh1q1919k2g3ujdbphqbd91ltfs.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA6jLOuk65aIbi9s1oqIXQ6XI-CHvnmZUY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "296371796370-28b42hh1q1919k2g3ujdbphqbd91ltfs.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

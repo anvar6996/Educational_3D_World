@@ -1,3 +1,21 @@
 <resources>
     <string name="app_name">Educational 3D World</string>
+
+    <string name="main">Главная</string>
+    <string name="favourite">Избранное</string>
+    <string name="downloads">Загруженное</string>
+    <string name="profile">Профиль</string>
+
+    <!--    Pesonal data screen-->
+
+    <string name="personalData">Личные данные</string>
+    <string name="phoneNumber">Номер телефона</string>
+    <string name="gender">Пол</string>
+    <string name="secondName">Фамилия</string>
+    <string name="name">Имя</string>
+    <string name="email">Email</string>
+    <string name="dateOfBirth">Дата рождения</string>
+    <string name="apply">Применить</string>
+    <string name="man">M</string>
+    <string name="woman">Ж</string>
 </resources>

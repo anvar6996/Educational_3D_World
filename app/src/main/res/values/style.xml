@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="AppTheme" parent="Theme.MaterialComponents">
+
+        <item name="colorPrimary">@color/redNewProduct</item>
+        <item name="colorPrimaryDark">@color/lightYellowProduct</item>
+        <item name="colorAccent">#AEEA00</item>
+
+    </style>
+
+    <style name="ScreenPersonalCardviewStyle" parent="Theme.MaterialComponents">
+
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">?android:actionBarSize</item>
+        <item name="android:layout_marginTop">4dp</item>
+
+
+    </style>
+
+</resources>

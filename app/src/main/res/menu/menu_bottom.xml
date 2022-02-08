@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:ignore="MissingDefaultResource">
+
+
+    <item
+        android:id="@+id/home"
+        android:icon="@drawable/ic_baseline_home_24"
+        android:title="@string/main" />
+
+    <item
+        android:id="@+id/catalog"
+        android:icon="@drawable/ic_baseline_menu_24"
+        android:title="@string/favourite" />
+
+    <item
+        android:id="@+id/QR"
+        android:title="" />
+
+    <item
+        android:id="@+id/calendar"
+        android:icon="@drawable/ic_baseline_download_24"
+        android:title="@string/downloads" />
+
+    <item
+        android:id="@+id/profile"
+        android:icon="@drawable/ic_person"
+        android:title="@string/profile" />
+
+
+</menu>
+

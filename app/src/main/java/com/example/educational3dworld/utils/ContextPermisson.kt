@@ -1,4 +1,4 @@
-//package uz.gita.mygoaward_project.utils
+//package com.example.educational3dworld.utils
 //
 //import android.app.Activity
 //import android.content.Context

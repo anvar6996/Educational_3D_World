@@ -1,4 +1,4 @@
-package uz.gita.mygoaward_project.utils
+package com.example.educational3dworld.utils
 
 import android.text.Spannable
 import android.text.SpannableString

@@ -2,16 +2,17 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.educational3dworld">
 
-<!--    <uses-permission android:name="android.permission.CAMERA"/>-->
+    <!--    <uses-permission android:name="android.permission.CAMERA"/>-->
 
     <application
+        android:name=".app.App"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
-        android:name=".app.App"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.Educational3DWorld">
+        android:theme="@style/Theme.Educational3DWorld"
+        android:usesCleartextTraffic="true">
         <activity
             android:name=".MainActivity"
             android:exported="true">

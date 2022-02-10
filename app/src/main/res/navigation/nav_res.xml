@@ -10,4 +10,22 @@
         android:name="com.example.educational3dworld.presenter.screens.DrawerScreen"
         android:label="DrawerScreen"
         tools:layout="@layout/screen_drawer_main" />
+    <fragment
+        android:id="@+id/splashScreen"
+        android:name="com.example.educational3dworld.presenter.screens.SplashScreen"
+        android:label="SplashScreen"
+        tools:layout="@layout/screen_splash">
+        <action
+            android:id="@+id/action_splashScreen_to_authScreen"
+            app:destination="@id/authScreen" />
+    </fragment>
+    <fragment
+        android:id="@+id/authScreen"
+        android:name="com.example.educational3dworld.presenter.screens.AuthScreen"
+        android:label="AuthScreen"
+        tools:layout="@layout/screen_auth">
+        <action
+            android:id="@+id/action_authScreen_to_drawerScreen"
+            app:destination="@id/drawerScreen" />
+    </fragment>
 </navigation>

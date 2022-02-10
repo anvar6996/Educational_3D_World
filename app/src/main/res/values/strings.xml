@@ -18,4 +18,8 @@
     <string name="apply">Применить</string>
     <string name="man">M</string>
     <string name="woman">Ж</string>
+
+    <!--    Auth screen-->
+    <string name="user_name">Имя</string>
+
 </resources>

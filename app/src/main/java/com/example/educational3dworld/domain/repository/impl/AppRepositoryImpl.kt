@@ -3,6 +3,10 @@ package com.example.educational3dworld.domain.repository.impl
 import com.example.educational3dworld.data.models.ObjectData
 import com.example.educational3dworld.domain.repository.AppRepository
 import com.google.firebase.firestore.FirebaseFirestore
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.flow
+import kotlinx.coroutines.flow.flowOn
 import javax.inject.Inject
 
 class AppRepositoryImpl @Inject constructor(
@@ -17,7 +21,7 @@ class AppRepositoryImpl @Inject constructor(
     }
 
 
-    override fun getObjectsByType(type: Int): List<ObjectData> {
+    override fun getObjectsByType(type: Int): Flow<List<ObjectData>> = flow {
         val list = ArrayList<ObjectData>()
         fireStore.collection(collectionsType.getValue(type))
             .get()
@@ -34,8 +38,7 @@ class AppRepositoryImpl @Inject constructor(
             .addOnFailureListener {
 
             }
-        return list
-
-    }
+        emit(list)
+    }.flowOn(Dispatchers.IO)
 
 }

@@ -1,10 +1,11 @@
 package com.example.educational3dworld.data.models
 
 data class ObjectData(
-    val id: Int,
+    val id: Long,
     val name: String,
     val fileUrl: String,
-    val type: Int
+    val type: Long,
+    val image:String
 )
 
 enum class TypeEnum(
@@ -13,5 +14,7 @@ enum class TypeEnum(
 ) {
     History(1, "History"),
     Geometry(2, "Geometry"),
-    Zoology(3, "Zoology")
+    Zoology(3, "Zoology"),
+    Astronomy(4, "Astronomy"),
+    Music(5, "Music")
 }

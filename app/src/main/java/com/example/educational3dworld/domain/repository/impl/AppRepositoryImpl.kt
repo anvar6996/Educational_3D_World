@@ -9,7 +9,7 @@ class AppRepositoryImpl @Inject constructor(
     private val fireStore: FirebaseFirestore,
 ) : AppRepository {
     override var collectionsType: Map<Int, String> = mapOf(
-        1 to "history", 2 to "Geometry", 3 to "Zoologiya"
+        1 to "history", 2 to "Geometry", 3 to "Zoologiya", 4 to "Astronomy", 5 to "Music"
     )
     private var successLoadListener: (() -> Unit)? = null
     override fun successLoadListener(block: () -> Unit) {
@@ -23,11 +23,12 @@ class AppRepositoryImpl @Inject constructor(
             .get()
             .addOnSuccessListener { result ->
                 result.forEach { item ->
-                    val id = item["id"] as Int
+                    val id = item["id"] as Long
                     val name = item["name"] as String
-                    val type = item["type"] as Int
+                    val type = item["type"] as Long
                     val fileUrl = item["fileUrl"] as String
-                    list.add(ObjectData(id, name, fileUrl, type))
+                    val image = item["image"] as String
+                    list.add(ObjectData(id, name, fileUrl, type,image))
                 }
                 successLoadListener?.invoke()
             }

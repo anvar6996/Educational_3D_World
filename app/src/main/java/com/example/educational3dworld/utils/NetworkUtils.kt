@@ -1,4 +1,4 @@
-package uz.gita.mygoaward_project.utils
+package com.example.educational3dworld.utils
 
 
 //fun OkHttpClient.Builder.addLoggingInterceptor(context: Context): OkHttpClient.Builder {

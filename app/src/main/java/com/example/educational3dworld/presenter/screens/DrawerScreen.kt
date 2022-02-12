@@ -9,7 +9,7 @@ import com.example.educational3dworld.R
 import com.example.educational3dworld.databinding.ScreenDrawerMainBinding
 import dagger.hilt.android.AndroidEntryPoint
 import com.example.educational3dworld.presenter.adapters.MainPageAdapters
-import uz.gita.mygoaward_project.utils.scope
+import com.example.educational3dworld.utils.scope
 
 @AndroidEntryPoint
 class DrawerScreen : Fragment(R.layout.screen_drawer_main) {

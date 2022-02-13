@@ -12,5 +12,6 @@ interface MainPageViewModel {
 
     fun getModels()
     fun getModelsData(type: Int)
+    fun getObjects(type:Int)
 
 }

@@ -30,30 +30,31 @@ class MainPage : Fragment(R.layout.page_main) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) = bind.scope {
         super.onViewCreated(view, savedInstanceState)
-        recykler.adapter = adaptetColleaction
-        recykler.layoutManager = StaggeredGridLayoutManager(1, StaggeredGridLayoutManager.VERTICAL)
-
-        adaptetColleaction.setListener {
-            viewModel.getModelsData(it+1)
-        }
+//        recykler.adapter = adaptetColleaction
+//        recykler.layoutManager = StaggeredGridLayoutManager(1, StaggeredGridLayoutManager.VERTICAL)
+////
+//        adaptetColleaction.setListener {
+//            viewModel.getModelsData(it+1)
+//        }
         viewModel.successGetListFlow.onEach {
             showToast(it.size.toString() + " firebase")
-            recykler.adapter = ObjectAdapter()
-            recykler.layoutManager = StaggeredGridLayoutManager(1, StaggeredGridLayoutManager.VERTICAL)
+            recykler.adapter = objectAdapter
+            recykler.layoutManager =
+                StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL)
             objectAdapter.submitList(it)
         }.launchIn(lifecycleScope)
-
-        viewModel.getModels()
+//
+//        viewModel.getModels()
 
         viewModel.progressFlow.onEach {
             if (it) progress.show()
             else progress.hide()
         }.launchIn(lifecycleScope)
 
-        viewModel.successGetModelsFlow.onEach {
-            showToast(it.size.toString())
-            adaptetColleaction.submitList(it)
-        }.launchIn(lifecycleScope)
+//        viewModel.successGetModelsFlow.onEach {
+//            showToast(it.size.toString() + "Firebase")
+//            adaptetColleaction.submitList(it)
+//        }.launchIn(lifecycleScope)
 
         viewModel.errorFlow.onEach {
             showToast(it)

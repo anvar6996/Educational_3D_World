@@ -15,7 +15,7 @@ import com.example.educational3dworld.databinding.ItemModelBinding
 
 
 class ObjectAdapter : ListAdapter<ObjectData, ObjectAdapter.HistoryVH>(MyDifUtils) {
-    private var itemListener: ((Int) -> Unit)? = null
+    private var itemListener: ((Int,Int) -> Unit)? = null
 
     object MyDifUtils : DiffUtil.ItemCallback<ObjectData>() {
         override fun areItemsTheSame(oldItem: ObjectData, newItem: ObjectData): Boolean {
@@ -33,7 +33,7 @@ class ObjectAdapter : ListAdapter<ObjectData, ObjectAdapter.HistoryVH>(MyDifUtil
 
         init {
             itemView.setOnClickListener {
-                itemListener?.invoke(getItem(absoluteAdapterPosition).type.toInt())
+                itemListener?.invoke(getItem(absoluteAdapterPosition).type.toInt(),getItem(absoluteAdapterPosition).id.toInt())
             }
         }
 
@@ -53,7 +53,7 @@ class ObjectAdapter : ListAdapter<ObjectData, ObjectAdapter.HistoryVH>(MyDifUtil
             LayoutInflater.from(parent.context).inflate(R.layout.item_model, parent, false)
         )
 
-    fun setListener(f: (Int) -> Unit) {
+    fun setListener(f: (Int,Int) -> Unit) {
         itemListener = f
     }
 

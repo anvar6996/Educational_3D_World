@@ -48,11 +48,15 @@ class MainPageViewModelImpl @Inject constructor(
 
 
         repository.getObjectsByType(type)
+
         progressFlow.tryEmit(true)
         repository.successLoadListener {
             progressFlow.tryEmit(false)
+            getLoadObjects()
         }
 
+    }
+    private fun getLoadObjects(){
         viewModelScope.launch(Dispatchers.IO) {
             successGetListFlow.emit(repository.objectsList)
         }

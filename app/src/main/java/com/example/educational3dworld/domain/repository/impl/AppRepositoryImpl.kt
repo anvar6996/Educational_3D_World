@@ -61,7 +61,7 @@ class AppRepositoryImpl @Inject constructor(
 
 
     override fun getObjectsByType(type: Int) {
-
+        objectsList.clear()
         fireStore.collection(collectionsType.getValue(type))
             .get()
             .addOnSuccessListener { result ->

@@ -94,13 +94,10 @@ class AppRepositoryImpl @Inject constructor(
                      {
                          val fileUrl = item["fileUrl"] as String
                          val name = item["name"] as String
-                         modelById.apply {
-                             this?.id   = id
-                             this?.name = name
-                             this?.fileUrl = fileUrl
-                         }
+                         modelById = ModelData(id,name,fileUrl)
+
                          successLoadListener?.invoke()
-                         return@forEach
+
                      }
                  }
 

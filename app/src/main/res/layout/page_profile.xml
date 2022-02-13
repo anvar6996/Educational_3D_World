@@ -1,21 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/parent"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    android:layout_height="match_parent">
 
 
     <TextView
-        android:id="@+id/text"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:gravity="center"
         android:text="@string/personalData"
         android:textColor="@color/realBlack"
         android:textSize="24sp"
-        android:layout_margin="15dp"
+        app:layout_constraintBottom_toBottomOf="@id/backBt"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="@id/backBt" />
+
+    <ImageView
+        android:id="@+id/backBt"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:layout_margin="15dp"
+        app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <de.hdodenhof.circleimageview.CircleImageView
@@ -23,28 +31,30 @@
         android:layout_width="96dp"
         android:layout_height="96dp"
         android:layout_margin="15dp"
-        android:src="@drawable/image_poster"
+        android:src="@drawable/image_auth"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/text" />
+        app:layout_constraintTop_toBottomOf="@id/backBt" />
 
-    <de.hdodenhof.circleimageview.CircleImageView
+    <ImageView
         android:id="@+id/manIndicator"
         android:layout_width="36dp"
         android:layout_height="36dp"
         android:layout_margin="25dp"
-        android:src="@color/green"
+        android:src="@drawable/qr_bg"
+        app:layout_constraintHorizontal_bias="0.25"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toLeftOf="@id/imageProfile"
+        app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@id/imageProfile" />
 
-    <ImageView
+    <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/womanIndicator"
         android:layout_width="36dp"
         android:layout_height="36dp"
         android:layout_margin="25dp"
-        android:src="@color/realBlack"
-        app:layout_constraintLeft_toRightOf="@id/imageProfile"
+        android:src="#94000000"
+        app:layout_constraintHorizontal_bias="0.7"
+        app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@id/imageProfile" />
 
@@ -67,7 +77,6 @@
         android:textSize="22sp"
         app:layout_constraintBottom_toBottomOf="@id/womanIndicator"
         app:layout_constraintLeft_toRightOf="@id/womanIndicator"
-        app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="@id/womanIndicator" />
 
     <TextView
@@ -82,154 +91,121 @@
         app:layout_constraintLeft_toRightOf="@id/manIndicator"
         app:layout_constraintTop_toTopOf="@id/manIndicator" />
 
-    <TextView
-        android:id="@+id/secondNameText"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="5dp"
-        android:layout_marginTop="15dp"
-        android:text="@string/secondName"
-        android:textColor="@color/realBlack"
-        android:textSize="17sp"
-        app:layout_constraintLeft_toLeftOf="@id/manIndicator"
-        app:layout_constraintRight_toRightOf="@id/womanIndicator"
-        app:layout_constraintTop_toBottomOf="@id/womanIndicator" />
 
-    <androidx.cardview.widget.CardView
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/secondNameTI"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
         android:layout_width="0dp"
-        android:layout_marginTop="4dp"
         android:layout_height="?android:actionBarSize"
-        android:id="@+id/seconNameCV"
-        app:cardCornerRadius="15dp"
-        app:cardElevation="15dp"
-        app:layout_constraintLeft_toLeftOf="@id/manIndicator"
-        app:layout_constraintRight_toRightOf="@id/womanIndicator"
-        app:layout_constraintTop_toBottomOf="@id/secondNameText">
+        android:layout_marginTop="15dp"
+        android:background="@drawable/auth_items_bg"
+        android:hint="@string/secondName"
+        app:layout_constraintBottom_toTopOf="@id/nameTI"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/manIndicator"
+        app:layout_constraintWidth_percent="0.7">
 
         <androidx.appcompat.widget.AppCompatEditText
             android:id="@+id/secondNameET"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginLeft="8dp"
-            android:background="@drawable/auth_items_bg"
             android:gravity="center|left"
             android:textColor="@color/realBlack"
             android:textSize="18sp" />
 
-    </androidx.cardview.widget.CardView>
+    </com.google.android.material.textfield.TextInputLayout>
 
 
-    <TextView
-        android:id="@+id/nameText"
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/nameTI"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="5dp"
-        android:layout_marginTop="15dp"
-        android:text="@string/name"
-        android:textColor="@color/realBlack"
-        android:textSize="17sp"
-        app:layout_constraintLeft_toLeftOf="@id/manIndicator"
-        app:layout_constraintRight_toRightOf="@id/womanIndicator"
-        app:layout_constraintTop_toBottomOf="@id/seconNameCV" />
-
-
-    <androidx.cardview.widget.CardView
-        android:id="@+id/nameCV"
-        style="@style/ScreenPersonalCardviewStyle"
-        app:cardCornerRadius="15dp"
-        android:layout_width="0dp"
-        android:layout_marginTop="4dp"
         android:layout_height="?android:actionBarSize"
-        app:cardElevation="15dp"
-        app:layout_constraintLeft_toLeftOf="@id/manIndicator"
-        app:layout_constraintRight_toRightOf="@id/womanIndicator"
-        app:layout_constraintTop_toBottomOf="@id/nameText">
+        android:layout_marginTop="15dp"
+        android:background="@drawable/auth_items_bg"
+        android:hint="@string/name"
+        app:layout_constraintBottom_toTopOf="@id/phoneNumberTI"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/secondNameTI"
+        app:layout_constraintWidth_percent="0.7">
 
         <androidx.appcompat.widget.AppCompatEditText
             android:id="@+id/nameET"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginLeft="8dp"
-            android:background="@drawable/auth_items_bg"
             android:gravity="center|left"
             android:textColor="@color/realBlack"
             android:textSize="18sp" />
 
-    </androidx.cardview.widget.CardView>
+    </com.google.android.material.textfield.TextInputLayout>
 
-    <TextView
-        android:id="@+id/phoneNumberText"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="5dp"
-        android:layout_marginTop="15dp"
-        android:text="@string/phoneNumber"
-        android:textColor="@color/realBlack"
-        android:textSize="17sp"
-        app:layout_constraintLeft_toLeftOf="@id/manIndicator"
-        app:layout_constraintRight_toRightOf="@id/womanIndicator"
-        app:layout_constraintTop_toBottomOf="@id/nameCV" />
 
-    <androidx.cardview.widget.CardView
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/phoneNumberTI"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
         android:layout_width="0dp"
-        android:layout_marginTop="4dp"
         android:layout_height="?android:actionBarSize"
-        android:id="@+id/phoneNumberCV"
-        style="@style/ScreenPersonalCardviewStyle"
-        app:cardCornerRadius="15dp"
-        app:cardElevation="15dp"
-        app:layout_constraintLeft_toLeftOf="@id/manIndicator"
-        app:layout_constraintRight_toRightOf="@id/womanIndicator"
-        app:layout_constraintTop_toBottomOf="@id/phoneNumberText">
+        android:layout_marginTop="15dp"
+        android:background="@drawable/auth_items_bg"
+        android:hint="@string/phoneNumber"
+        app:layout_constraintBottom_toTopOf="@id/emailTI"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/nameTI"
+        app:layout_constraintWidth_percent="0.7">
 
         <androidx.appcompat.widget.AppCompatEditText
             android:id="@+id/phoneNumberET"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginLeft="8dp"
-            android:background="@drawable/auth_items_bg"
             android:gravity="center|left"
             android:textColor="@color/realBlack"
             android:textSize="18sp" />
 
-    </androidx.cardview.widget.CardView>
+    </com.google.android.material.textfield.TextInputLayout>
 
 
-    <TextView
-        android:id="@+id/emailText"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="5dp"
-        android:layout_marginTop="15dp"
-        android:text="@string/email"
-        android:textColor="@color/realBlack"
-        android:textSize="17sp"
-        app:layout_constraintLeft_toLeftOf="@id/manIndicator"
-        app:layout_constraintRight_toRightOf="@id/womanIndicator"
-        app:layout_constraintTop_toBottomOf="@id/phoneNumberCV" />
-
-    <androidx.cardview.widget.CardView
-        android:id="@+id/emailCV"
-        style="@style/ScreenPersonalCardviewStyle"
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/emailTI"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
         android:layout_width="0dp"
         android:layout_height="?android:actionBarSize"
-        app:cardCornerRadius="15dp"
-        app:cardElevation="15dp"
-        app:layout_constraintLeft_toLeftOf="@id/manIndicator"
-        app:layout_constraintRight_toRightOf="@id/womanIndicator"
-        app:layout_constraintTop_toBottomOf="@id/emailText">
+        android:layout_marginTop="15dp"
+        android:background="@drawable/auth_items_bg"
+        android:hint="@string/email"
+        app:layout_constraintBottom_toTopOf="@id/phoneNumberTI"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/phoneNumberTI"
+        app:layout_constraintWidth_percent="0.7">
 
         <androidx.appcompat.widget.AppCompatEditText
             android:id="@+id/emailET"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginLeft="8dp"
-            android:background="@drawable/auth_items_bg"
             android:gravity="center|left"
             android:textColor="@color/realBlack"
             android:textSize="18sp" />
 
-    </androidx.cardview.widget.CardView>
+    </com.google.android.material.textfield.TextInputLayout>
+
+
+    <TextView
+        android:id="@+id/applyBt"
+        android:layout_width="0dp"
+        android:layout_height="?android:actionBarSize"
+        android:layout_margin="35sp"
+        android:background="@drawable/bg_auth_bt"
+        android:gravity="center"
+        android:text="@string/apply"
+        android:textColor="@color/realWhite"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/emailTI" />
 
 
     <androidx.core.widget.ContentLoadingProgressBar
@@ -245,6 +221,5 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.9" />
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>

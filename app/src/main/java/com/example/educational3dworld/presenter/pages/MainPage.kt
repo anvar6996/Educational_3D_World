@@ -46,6 +46,7 @@ class MainPage : Fragment(R.layout.page_main) {
             recykler.layoutManager =
                 StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL)
             objectAdapter.submitList(it)
+//            recykler.layoutAnimation.notify()
         }.launchIn(lifecycleScope)
 
 

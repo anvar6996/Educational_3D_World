@@ -34,6 +34,8 @@ class MainPage : Fragment(R.layout.page_main) {
         recykler.layoutManager = StaggeredGridLayoutManager(1, StaggeredGridLayoutManager.VERTICAL)
         viewModel.getModels()
 
+
+
         adaptetColleaction.setListener {
             viewModel.getObjects(it + 1)
         }
@@ -44,12 +46,16 @@ class MainPage : Fragment(R.layout.page_main) {
             recykler.layoutManager =
                 StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL)
             objectAdapter.submitList(it)
+//            recykler.layoutAnimation.notify()
         }.launchIn(lifecycleScope)
 
 
         viewModel.progressFlow.onEach {
-            if (it) progress.show()
-            else progress.hide()
+            if (it) {
+                progress.show()
+            } else {
+                progress.hide()
+            }
         }.launchIn(lifecycleScope)
 
         viewModel.successGetModelsFlow.onEach {
@@ -59,6 +65,7 @@ class MainPage : Fragment(R.layout.page_main) {
 
         viewModel.errorFlow.onEach {
             showToast(it)
+
         }.launchIn(lifecycleScope)
     }
 }

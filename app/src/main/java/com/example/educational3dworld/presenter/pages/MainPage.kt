@@ -20,12 +20,12 @@ import kotlinx.coroutines.flow.onEach
 @AndroidEntryPoint
 class MainPage : Fragment(R.layout.page_main) {
     private val bind by viewBinding(PageMainBinding::bind)
-    private val adaptetColleaction = CollectionAdapter()
+    private val adaptetColleaction by lazy { CollectionAdapter() }
     private val viewModel: MainPageViewModel by viewModels<MainPageViewModelImpl>()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) = bind.scope {
         super.onViewCreated(view, savedInstanceState)
-        recykler.adapter = CollectionAdapter()
+        recykler.adapter = adaptetColleaction
         recykler.layoutManager = StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL)
 
         viewModel.successGetModelsFlow.onEach {

@@ -16,7 +16,7 @@ class AppRepositoryImpl @Inject constructor(
     override var collectionsType: Map<Int, String> = mapOf(
         1 to "history", 2 to "Geometry", 3 to "Zoologiya", 4 to "Astronomy", 5 to "Music"
     )
-     var collectionImage: ArrayList<CollectionData> = listOf<CollectionData>(
+    override var collectionImage: ArrayList<CollectionData> = listOf<CollectionData>(
          CollectionData(
              1,
              "https://thedispatch.blob.core.windows.net/thedispatchimages/2021/09/History.jpg"

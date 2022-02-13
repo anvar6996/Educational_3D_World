@@ -10,20 +10,20 @@ import androidx.recyclerview.widget.RecyclerView
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.bumptech.glide.Glide
 import com.example.educational3dworld.R
-import com.example.educational3dworld.data.models.ObjectData
+import com.example.educational3dworld.data.models.CollectionData
 import com.example.educational3dworld.databinding.ItemModelBinding
 
 
-class CollectionAdapter : ListAdapter<ObjectData, CollectionAdapter.HistoryVH>(MyDifUtils) {
+class CollectionAdapter : ListAdapter<CollectionData, CollectionAdapter.HistoryVH>(MyDifUtils) {
     private var itemListener: ((Int) -> Unit)? = null
 
-    object MyDifUtils : DiffUtil.ItemCallback<ObjectData>() {
-        override fun areItemsTheSame(oldItem: ObjectData, newItem: ObjectData): Boolean {
+    object MyDifUtils : DiffUtil.ItemCallback<CollectionData>() {
+        override fun areItemsTheSame(oldItem: CollectionData, newItem: CollectionData): Boolean {
             return oldItem == newItem
         }
 
         @SuppressLint("DiffUtilEquals")
-        override fun areContentsTheSame(oldItem: ObjectData, newItem: ObjectData): Boolean {
+        override fun areContentsTheSame(oldItem: CollectionData, newItem: CollectionData): Boolean {
             return oldItem == newItem
         }
     }
@@ -38,8 +38,7 @@ class CollectionAdapter : ListAdapter<ObjectData, CollectionAdapter.HistoryVH>(M
         }
 
         fun load() {
-            val value = getItem(absoluteAdapterPosition) as ObjectData
-            bind.textModel.text = value.name
+            val value = getItem(absoluteAdapterPosition) as CollectionData
             Glide.with(bind.modelImge.context).load(value.image).into(bind.modelImge)
         }
     }

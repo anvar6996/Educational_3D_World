@@ -12,6 +12,7 @@ import com.example.educational3dworld.presenter.adapters.CollectionAdapter
 import com.example.educational3dworld.presenter.viewmodel.MainPageViewModel
 import com.example.educational3dworld.presenter.viewmodel.viewmodelimpl.MainPageViewModelImpl
 import com.example.educational3dworld.utils.scope
+import com.example.educational3dworld.utils.showToast
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.onEach
 
@@ -28,10 +29,7 @@ class MainPage : Fragment(R.layout.page_main) {
         recykler.layoutManager = StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL)
 
         viewModel.successGetModelsFlow.onEach {
-
-        }
-        viewModel.errorFlow.onEach {
-
+            adaptetColleaction.submitList(it)
         }
     }
 }

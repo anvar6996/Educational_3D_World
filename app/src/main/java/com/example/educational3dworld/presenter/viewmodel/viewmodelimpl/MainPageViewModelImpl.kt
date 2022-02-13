@@ -37,7 +37,7 @@ class MainPageViewModelImpl @Inject constructor(
             progressFlow.emit(true)
         }
 
-        successGetModelsFlow.tryEmit(repository.collectionImage as ArrayList<CollectionData>)
+        successGetModelsFlow.tryEmit(repository.collectionImage )
     }
 
 

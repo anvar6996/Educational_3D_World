@@ -11,7 +11,6 @@ interface MainPageViewModel {
     val successGetListFlow: Flow<ArrayList<ObjectData>>
 
     fun getModels()
-    fun getModelsData(type: Int)
     fun getObjects(type:Int)
 
 }

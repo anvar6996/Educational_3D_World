@@ -25,16 +25,6 @@ class MainPageViewModelImpl @Inject constructor(
     override val successGetListFlow = eventValueFlow<ArrayList<ObjectData>>()
 
 
-    init {
-        repository.getObjectsByType(1)
-        progressFlow.tryEmit(true)
-        repository.successLoadListener {
-            progressFlow.tryEmit(false)
-
-            getModels()
-        }
-    }
-
     override fun getModels() {
         if (!isConnected()) {
             viewModelScope.launch {
@@ -44,30 +34,10 @@ class MainPageViewModelImpl @Inject constructor(
         }
 
         viewModelScope.launch {
-            successGetListFlow.emit(repository.objectsList)
+            successGetModelsFlow.emit(repository.successLoadImage())
         }
     }
 
-    override fun getModelsData(type: Int) {
-
-    }
-
-    //
-//    override fun getModelsData(type: Int) {
-//        if (!isConnected()) {
-//            viewModelScope.launch {
-//                errorFlow.emit("Internet bilan muammo bo'ldi")
-//            }
-//            return
-//        }
-//
-//        viewModelScope.launch {
-//            repository.getObjectsByType(type).onEach {
-//                successGetListFlow.emit(it as ArrayList<ObjectData>)
-//            }.launchIn(viewModelScope)
-//
-//        }
-//    }
     override fun getObjects(type: Int) {
         if (!isConnected()) {
             viewModelScope.launch {
@@ -76,10 +46,16 @@ class MainPageViewModelImpl @Inject constructor(
             return
         }
 
+
+        repository.getObjectsByType(type)
+        progressFlow.tryEmit(true)
+        repository.successLoadListener {
+            progressFlow.tryEmit(false)
+        }
+
         viewModelScope.launch(Dispatchers.IO) {
             successGetListFlow.emit(repository.objectsList)
         }
-
     }
 }
 

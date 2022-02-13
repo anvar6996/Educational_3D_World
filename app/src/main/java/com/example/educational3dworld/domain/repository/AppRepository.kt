@@ -7,7 +7,7 @@ import kotlinx.coroutines.flow.Flow
 interface AppRepository {
 
     var collectionsType: Map<Int, String>
-    var collectionImage: List<CollectionData>
+    var collectionImage: ArrayList<CollectionData>
 
     fun successLoadListener(block: () -> Unit)
 

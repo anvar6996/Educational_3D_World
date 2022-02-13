@@ -6,7 +6,7 @@ import kotlinx.coroutines.flow.Flow
 interface MainPageViewModel {
     val errorFlow: Flow<String>
     val progressFlow: Flow<Boolean>
-    val successGetModelsFlow: Flow<List<CollectionData>>
+    val successGetModelsFlow: Flow<ArrayList<CollectionData>>
 
     fun getModels()
 

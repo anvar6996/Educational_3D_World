@@ -19,7 +19,7 @@ class MainPageViewModelImpl @Inject constructor(
     MainPageViewModel {
     override val errorFlow = eventValueFlow<String>()
     override val progressFlow = eventValueFlow<Boolean>()
-    override val successGetModelsFlow = eventValueFlow<List<CollectionData>>()
+    override val successGetModelsFlow = eventValueFlow<ArrayList<CollectionData>>()
 
 
     init {

@@ -16,6 +16,7 @@ class AppRepositoryImpl @Inject constructor(
     override var collectionsType: Map<Int, String> = mapOf(
         1 to "history", 2 to "Geometry", 3 to "Zoologiya", 4 to "Astronomy", 5 to "Music"
     )
+    override val objectsList = ArrayList<ObjectData>()
 
     private var successLoadListener: (() -> Unit)? = null
     override fun successLoadListener(block: () -> Unit) {
@@ -63,8 +64,8 @@ class AppRepositoryImpl @Inject constructor(
     }
 
 
-    override fun getObjectsByType(type: Int): Flow<List<ObjectData>> = flow {
-        val list = ArrayList<ObjectData>()
+    override fun getObjectsByType(type: Int) {
+
         fireStore.collection(collectionsType.getValue(type))
             .get()
             .addOnSuccessListener { result ->
@@ -73,14 +74,13 @@ class AppRepositoryImpl @Inject constructor(
                     val name = item["name"] as String
                     val type = item["type"] as Long
                     val image = item["image"] as String
-                    list.add(ObjectData(id, name, type, image))
+                    objectsList.add(ObjectData(id, name, type, image))
                 }
                 successLoadListener?.invoke()
             }
             .addOnFailureListener {
 
             }
-        emit(list)
-    }.flowOn(Dispatchers.IO)
+      }
 
 }

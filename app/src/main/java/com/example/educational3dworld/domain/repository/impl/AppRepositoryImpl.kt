@@ -72,9 +72,8 @@ class AppRepositoryImpl @Inject constructor(
                     val id = item["id"] as Long
                     val name = item["name"] as String
                     val type = item["type"] as Long
-                    val fileUrl = item["fileUrl"] as String
                     val image = item["image"] as String
-                    list.add(ObjectData(id, name, fileUrl, type, image))
+                    list.add(ObjectData(id, name, type, image))
                 }
                 successLoadListener?.invoke()
             }

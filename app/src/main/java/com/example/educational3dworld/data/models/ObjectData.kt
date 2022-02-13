@@ -3,7 +3,6 @@ package com.example.educational3dworld.data.models
 data class ObjectData(
     val id: Long,
     val name: String,
-    val fileUrl: String,
     val type: Long,
     val image:String
 )

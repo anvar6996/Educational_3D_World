@@ -9,7 +9,11 @@
         android:id="@+id/drawerScreen"
         android:name="com.example.educational3dworld.presenter.screens.DrawerScreen"
         android:label="DrawerScreen"
-        tools:layout="@layout/screen_drawer_main" />
+        tools:layout="@layout/screen_drawer_main">
+        <action
+            android:id="@+id/action_drawerScreen_to_modelScreen"
+            app:destination="@id/modelScreen" />
+    </fragment>
     <fragment
         android:id="@+id/splashScreen"
         android:name="com.example.educational3dworld.presenter.screens.SplashScreen"
@@ -28,4 +32,9 @@
             android:id="@+id/action_authScreen_to_drawerScreen"
             app:destination="@id/drawerScreen" />
     </fragment>
+    <fragment
+        android:id="@+id/modelScreen"
+        android:name="com.example.educational3dworld.presenter.screens.ModelScreen"
+        android:label="ModelScreen"
+        tools:layout="@layout/screen_model" />
 </navigation>

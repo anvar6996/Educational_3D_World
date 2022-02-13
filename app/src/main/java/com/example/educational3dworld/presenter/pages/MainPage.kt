@@ -8,9 +8,9 @@ import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.example.educational3dworld.R
-import com.example.educational3dworld.data.models.CollectionData
 import com.example.educational3dworld.databinding.PageMainBinding
 import com.example.educational3dworld.presenter.adapters.CollectionAdapter
+import com.example.educational3dworld.presenter.adapters.ObjectAdapter
 import com.example.educational3dworld.presenter.viewmodel.MainPageViewModel
 import com.example.educational3dworld.presenter.viewmodel.viewmodelimpl.MainPageViewModelImpl
 import com.example.educational3dworld.utils.scope
@@ -24,6 +24,7 @@ import kotlinx.coroutines.flow.onEach
 class MainPage : Fragment(R.layout.page_main) {
     private val bind by viewBinding(PageMainBinding::bind)
     private val adaptetColleaction by lazy { CollectionAdapter() }
+    private val objectAdapter by lazy { ObjectAdapter() }
     private val viewModel: MainPageViewModel by viewModels<MainPageViewModelImpl>()
 
 
@@ -32,6 +33,14 @@ class MainPage : Fragment(R.layout.page_main) {
         recykler.adapter = adaptetColleaction
         recykler.layoutManager = StaggeredGridLayoutManager(1, StaggeredGridLayoutManager.VERTICAL)
 
+        adaptetColleaction.setListener {
+            viewModel.getModelsData(it)
+        }
+        viewModel.successGetListFlow.onEach {
+            showToast(it.size.toString()+" firebase")
+            recykler.adapter = ObjectAdapter()
+            objectAdapter.submitList(it)
+        }.launchIn(lifecycleScope)
 
         viewModel.getModels()
 

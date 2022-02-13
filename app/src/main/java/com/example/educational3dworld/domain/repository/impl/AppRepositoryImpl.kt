@@ -1,6 +1,7 @@
 package com.example.educational3dworld.domain.repository.impl
 
 import com.example.educational3dworld.data.models.CollectionData
+import com.example.educational3dworld.data.models.ModelData
 import com.example.educational3dworld.data.models.ObjectData
 import com.example.educational3dworld.domain.repository.AppRepository
 import com.google.firebase.firestore.FirebaseFirestore
@@ -13,6 +14,8 @@ class AppRepositoryImpl @Inject constructor(
         1 to "history", 2 to "Geometry", 3 to "Zoologiya", 4 to "Astronomy", 5 to "Music"
     )
     override val objectsList = ArrayList<ObjectData>()
+    override var modelById: ModelData? = null
+
 
     private var successLoadListener: (() -> Unit)? = null
     override fun successLoadListener(block: () -> Unit) {
@@ -77,6 +80,31 @@ class AppRepositoryImpl @Inject constructor(
             .addOnFailureListener {
 
             }
+    }
+
+
+
+    override fun getModelById(idModel: Long, type: Int) {
+         fireStore.collection(collectionsType.getValue(type))
+             .get()
+             .addOnSuccessListener {result->
+                 result.forEach { item ->
+                     val id = item["id"] as Long
+                     if(id == idModel)
+                     {
+                         val fileUrl = item["fileUrl"] as String
+                         val name = item["name"] as String
+                         modelById.apply {
+                             this?.id   = id
+                             this?.name = name
+                             this?.fileUrl = fileUrl
+                         }
+                         successLoadListener?.invoke()
+                         return@forEach
+                     }
+                 }
+
+             }
     }
 
 }

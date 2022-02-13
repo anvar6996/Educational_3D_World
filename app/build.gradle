@@ -183,7 +183,7 @@ dependencies {
 
     /**
      * AR
-     * * */
+     * */
     implementation "com.gorisse.thomas.sceneform:sceneform:1.20.4"
 
 //    /**

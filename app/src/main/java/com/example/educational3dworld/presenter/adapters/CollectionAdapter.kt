@@ -40,6 +40,7 @@ class CollectionAdapter : ListAdapter<CollectionData, CollectionAdapter.HistoryV
         fun load() {
             val value = getItem(absoluteAdapterPosition) as CollectionData
             Glide.with(bind.modelImge.context).load(value.image).into(bind.modelImge)
+            bind.textModel.text = value.name
         }
     }
 

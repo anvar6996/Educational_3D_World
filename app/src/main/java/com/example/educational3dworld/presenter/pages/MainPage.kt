@@ -37,12 +37,17 @@ class MainPage : Fragment(R.layout.page_main) {
             viewModel.getModelsData(it)
         }
         viewModel.successGetListFlow.onEach {
-            showToast(it.size.toString()+" firebase")
+            showToast(it.size.toString() + " firebase")
             recykler.adapter = ObjectAdapter()
             objectAdapter.submitList(it)
         }.launchIn(lifecycleScope)
 
         viewModel.getModels()
+
+        viewModel.progressFlow.onEach {
+            if (it) progress.show()
+            else progress.hide()
+        }.launchIn(lifecycleScope)
 
         viewModel.successGetModelsFlow.onEach {
             showToast(it.size.toString())

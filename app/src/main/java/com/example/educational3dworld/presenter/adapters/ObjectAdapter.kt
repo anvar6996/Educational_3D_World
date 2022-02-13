@@ -33,7 +33,7 @@ class ObjectAdapter : ListAdapter<ObjectData, ObjectAdapter.HistoryVH>(MyDifUtil
 
         init {
             itemView.setOnClickListener {
-                itemListener?.invoke(absoluteAdapterPosition)
+                itemListener?.invoke(getItem(absoluteAdapterPosition).type.toInt())
             }
         }
 

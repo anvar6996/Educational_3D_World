@@ -51,6 +51,9 @@ class MainPageViewModelImpl @Inject constructor(
             repository.getObjectsByType(type).onEach {
                 successGetListFlow.emit(it as ArrayList<ObjectData>)
             }.launchIn(viewModelScope)
+            repository.successLoadListener {
+                progressFlow.tryEmit(false)
+            }
         }
     }
 

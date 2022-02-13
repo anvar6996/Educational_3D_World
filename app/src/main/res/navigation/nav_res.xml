@@ -36,5 +36,12 @@
         android:id="@+id/modelScreen"
         android:name="com.example.educational3dworld.presenter.screens.ModelScreen"
         android:label="ModelScreen"
-        tools:layout="@layout/screen_model" />
+        tools:layout="@layout/screen_model" >
+        <argument
+            android:name="id"
+            app:argType="long" />
+        <argument
+            android:name="type"
+            app:argType="integer" />
+    </fragment>
 </navigation>

@@ -30,7 +30,7 @@ class MainPage : Fragment(R.layout.page_main) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) = bind.scope {
         super.onViewCreated(view, savedInstanceState)
         recykler.adapter = adaptetColleaction
-        recykler.layoutManager = StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL)
+        recykler.layoutManager = StaggeredGridLayoutManager(1, StaggeredGridLayoutManager.VERTICAL)
 
 
         viewModel.getModels()

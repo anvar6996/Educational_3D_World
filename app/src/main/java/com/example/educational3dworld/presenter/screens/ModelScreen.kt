@@ -1,11 +1,21 @@
 package com.example.educational3dworld.presenter.screens
 
+//import com.google.ar.core.HitResult
+//import com.google.ar.core.Plane
+//import com.google.ar.sceneform.AnchorNode
+//import com.google.ar.sceneform.Node
+//import com.google.ar.sceneform.math.Vector3
+//import com.google.ar.sceneform.rendering.ModelRenderable
+//import com.google.ar.sceneform.rendering.Renderable
+//import com.google.ar.sceneform.rendering.ViewRenderable
+//import com.google.ar.sceneform.ux.ArFragment
+//import com.google.ar.sceneform.ux.TransformableNode
+//import com.gorisse.thomas.sceneform.scene.await
 import android.net.Uri
 import android.os.Bundle
 import android.view.MotionEvent
 import android.view.View
 import android.widget.Toast
-import androidx.core.view.accessibility.AccessibilityRecordCompat.setSource
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
@@ -13,10 +23,9 @@ import androidx.navigation.fragment.navArgs
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.example.educational3dworld.R
 import com.example.educational3dworld.databinding.ScreenModelBinding
-import com.example.educational3dworld.presenter.viewmodel.MainPageViewModel
 import com.example.educational3dworld.presenter.viewmodel.ModelScreenViewModel
-import com.example.educational3dworld.presenter.viewmodel.viewmodelimpl.MainPageViewModelImpl
 import com.example.educational3dworld.presenter.viewmodel.viewmodelimpl.ModelScreenViewModelImpl
+import com.example.educational3dworld.utils.showToast
 import com.google.ar.core.HitResult
 import com.google.ar.core.Plane
 import com.google.ar.sceneform.AnchorNode
@@ -29,17 +38,6 @@ import com.google.ar.sceneform.rendering.ViewRenderable
 import com.google.ar.sceneform.ux.ArFragment
 import com.google.ar.sceneform.ux.TransformableNode
 import com.gorisse.thomas.sceneform.scene.await
-//import com.google.ar.core.HitResult
-//import com.google.ar.core.Plane
-//import com.google.ar.sceneform.AnchorNode
-//import com.google.ar.sceneform.Node
-//import com.google.ar.sceneform.math.Vector3
-//import com.google.ar.sceneform.rendering.ModelRenderable
-//import com.google.ar.sceneform.rendering.Renderable
-//import com.google.ar.sceneform.rendering.ViewRenderable
-//import com.google.ar.sceneform.ux.ArFragment
-//import com.google.ar.sceneform.ux.TransformableNode
-//import com.gorisse.thomas.sceneform.scene.await
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
@@ -55,15 +53,16 @@ class ModelScreen : Fragment(R.layout.screen_model) {
     private var modelView: ViewRenderable? = null
 
     private val viewModel: ModelScreenViewModel by viewModels<ModelScreenViewModelImpl>()
-    private val args:ModelScreenArgs by navArgs()
+    private val args: ModelScreenArgs by navArgs()
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        viewModel.getObjectUrl(args.type,args.id)
+        viewModel.getObjectUrl(args.type, args.id)
         loadFlows()
 
     }
-    private fun arBegging(fileUrl:String){
+
+    private fun arBegging(fileUrl: String) {
         arFragment = (childFragmentManager.findFragmentById(R.id.arFragment) as ArFragment).apply {
             setOnSessionConfigurationListener { session, config ->
                 // Modify the AR session configuration here
@@ -75,21 +74,19 @@ class ModelScreen : Fragment(R.layout.screen_model) {
             setOnTapPlaneGlbModel(fileUrl)
         }
 
-        lifecycleScope.launchWhenCreated {
-            loadModels(fileUrl)
-        }
     }
+
     private fun loadFlows() {
         viewModel.modelFlow.onEach {
+            showToast(it.fileUrl)
             arBegging(it.fileUrl)
         }.launchIn(lifecycleScope)
     }
 
     private suspend fun loadModels(fileUrl: String) {
         model = ModelRenderable.builder()
-            .setSource(context,Uri.parse(fileUrl))
-            .setIsFilamentGltf(true)
-            .await()
+            .setSource(context, Uri.parse("https://storage.googleapis.com/ar-answers-in-search-models/static/GiantPanda/model.glb"))
+            .setIsFilamentGltf(true).await()
         modelView = ViewRenderable.builder()
             .await()
     }

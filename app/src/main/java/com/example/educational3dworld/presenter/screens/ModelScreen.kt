@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.MotionEvent
 import android.view.View
 import android.widget.Toast
+import androidx.core.view.accessibility.AccessibilityRecordCompat.setSource
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
@@ -74,9 +75,9 @@ class ModelScreen : Fragment(R.layout.screen_model) {
             setOnTapPlaneGlbModel(fileUrl)
         }
 
-//        lifecycleScope.launchWhenCreated {
-//            loadModels(fileUrl)
-//        }
+        lifecycleScope.launchWhenCreated {
+            loadModels(fileUrl)
+        }
     }
     private fun loadFlows() {
         viewModel.modelFlow.onEach {
@@ -86,6 +87,7 @@ class ModelScreen : Fragment(R.layout.screen_model) {
 
     private suspend fun loadModels(fileUrl: String) {
         model = ModelRenderable.builder()
+            .setSource(context,Uri.parse(fileUrl))
             .setIsFilamentGltf(true)
             .await()
         modelView = ViewRenderable.builder()

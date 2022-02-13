@@ -181,27 +181,29 @@ dependencies {
     implementation 'com.google.firebase:firebase-analytics-ktx'
     implementation 'com.google.firebase:firebase-firestore-ktx'
 
+
+
+
+
     /**
      * AR
      * * */
     implementation "com.gorisse.thomas.sceneform:sceneform:1.20.4"
 
+//
 //    /**
 //     *
 //     *  Runtime permissions
 //     */
-//
-//    implementation 'com.nabinbhandari.android:permissions:3.8'
+//    implementation 'com.github.florent37:runtime-permission:2.0'
 //
 //    /**
 //     * QR SCANNER
 //     * */
-//    implementation 'com.budiyev.android:code-scanner:2.1.0'
-//    implementation 'androidx.appcompat:appcompat:1.4.1'
+//    implementation 'com.github.yuriy-budiyev:code-scanner:2.1.0'
+//
 
 
-   /**
-    * Recykler view load Animate
-   * */
-    implementation 'com.facebook.shimmer:shimmer:0.3.0@aar'
+
+
 }

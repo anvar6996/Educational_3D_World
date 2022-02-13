@@ -200,5 +200,8 @@ dependencies {
 //    implementation 'androidx.appcompat:appcompat:1.4.1'
 
 
-
+   /**
+    * Recykler view load Animate
+   * */
+    implementation 'com.facebook.shimmer:shimmer:0.3.0@aar'
 }

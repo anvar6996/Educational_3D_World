@@ -10,7 +10,7 @@ interface AppRepository {
 //    var collectionImage: ArrayList<CollectionData>
 
     fun successLoadListener(block: () -> Unit)
-    fun successLoadImage(): Flow<ArrayList<CollectionData>>
+    fun successLoadImage(): ArrayList<CollectionData>
 
     fun getObjectsByType(type: Int): Flow<List<ObjectData>>
 

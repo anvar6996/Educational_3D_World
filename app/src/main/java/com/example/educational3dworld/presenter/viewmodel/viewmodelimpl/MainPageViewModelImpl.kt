@@ -8,7 +8,6 @@ import com.example.educational3dworld.presenter.viewmodel.MainPageViewModel
 import com.example.educational3dworld.utils.eventValueFlow
 import com.example.educational3dworld.utils.isConnected
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -35,9 +34,7 @@ class MainPageViewModelImpl @Inject constructor(
         }
 
         viewModelScope.launch {
-            repository.successLoadImage().onEach {
-                successGetModelsFlow.emit(it)
-            }
+            successGetModelsFlow.emit(repository.successLoadImage())
         }
     }
 

@@ -33,40 +33,7 @@ class MainPage : Fragment(R.layout.page_main) {
         recykler.layoutManager = StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL)
 
 
-        showToast("lala")
-        val list = ArrayList<CollectionData>()
-        list.add(
-            CollectionData(
-                1,
-                "https://thedispatch.blob.core.windows.net/thedispatchimages/2021/09/History.jpg"
-            )
-        )
-        list.add(
-            CollectionData(
-                2,
-                "https://img3.goodfon.ru/wallpaper/nbig/d/f2/colorful-geometry-shapes-7654.jpg"
-            )
-        )
-        list.add(
-            CollectionData(
-                3,
-                "https://leverageedu.com/blog/wp-content/uploads/2020/01/Branches-of-Zoology.png"
-            )
-        )
-        list.add(
-            CollectionData(
-                4,
-                "https://skyandtelescope.org/wp-content/uploads/Solar-system-NASA_S-630x338.jpg"
-            )
-        )
-        list.add(
-            CollectionData(
-                5,
-                "http://musicedhighlights.files.wordpress.com/2011/03/2010-clip-art.gif"
-            )
-        )
         viewModel.getModels()
-        adaptetColleaction.submitList(list)
 
         viewModel.successGetModelsFlow.onEach {
             showToast(it.size.toString())

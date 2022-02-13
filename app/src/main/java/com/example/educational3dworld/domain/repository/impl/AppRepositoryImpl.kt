@@ -41,7 +41,7 @@ class AppRepositoryImpl @Inject constructor(
         successLoadListener = block
     }
 
-    override fun successLoadImage(): Flow<ArrayList<CollectionData>> = flow {
+    override fun successLoadImage(): ArrayList<CollectionData> {
         val list = ArrayList<CollectionData>()
         list.add(
             CollectionData(
@@ -73,8 +73,8 @@ class AppRepositoryImpl @Inject constructor(
                 "http://musicedhighlights.files.wordpress.com/2011/03/2010-clip-art.gif"
             )
         )
-        emit(list)
-    }.flowOn(Dispatchers.Default)
+        return list
+    }
 
 
     override fun getObjectsByType(type: Int): Flow<List<ObjectData>> = flow {

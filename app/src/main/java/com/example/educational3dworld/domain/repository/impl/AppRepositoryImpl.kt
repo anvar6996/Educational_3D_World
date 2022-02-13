@@ -42,7 +42,7 @@ class AppRepositoryImpl @Inject constructor(
     }
 
     override fun successLoadImage(): Flow<ArrayList<CollectionData>> = flow {
-        var list = ArrayList<CollectionData>()
+        val list = ArrayList<CollectionData>()
         list.add(
             CollectionData(
                 1,
@@ -74,7 +74,7 @@ class AppRepositoryImpl @Inject constructor(
             )
         )
         emit(list)
-    }.flowOn(Dispatchers.IO)
+    }.flowOn(Dispatchers.Default)
 
 
     override fun getObjectsByType(type: Int): Flow<List<ObjectData>> = flow {

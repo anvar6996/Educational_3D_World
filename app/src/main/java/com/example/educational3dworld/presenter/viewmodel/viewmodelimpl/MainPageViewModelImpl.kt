@@ -18,7 +18,7 @@ class MainPageViewModelImpl @Inject constructor(
     MainPageViewModel {
     override val errorFlow = eventValueFlow<String>()
     override val progressFlow = eventValueFlow<Boolean>()
-    override val successGetModelsFlow = eventValueFlow<ArrayList<CollectionData>>()
+    override val successGetModelsFlow = eventValueFlow<List<CollectionData>>()
 
 
     init {
@@ -37,7 +37,7 @@ class MainPageViewModelImpl @Inject constructor(
             progressFlow.emit(true)
         }
 
-        successGetModelsFlow.tryEmit(repository.collectionImage as ArrayList<CollectionData>)
+        successGetModelsFlow.tryEmit(repository.collectionImage)
     }
 
 

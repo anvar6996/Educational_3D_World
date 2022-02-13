@@ -23,13 +23,18 @@ class MainPage : Fragment(R.layout.page_main) {
     private val adaptetColleaction = CollectionAdapter()
     private val viewModel: MainPageViewModel by viewModels<MainPageViewModelImpl>()
 
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) = bind.scope {
         super.onViewCreated(view, savedInstanceState)
         recykler.adapter = CollectionAdapter()
         recykler.layoutManager = StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL)
 
+
         viewModel.successGetModelsFlow.onEach {
             adaptetColleaction.submitList(it)
+        }
+        viewModel.errorFlow.onEach {
+            showToast(it)
         }
     }
 }

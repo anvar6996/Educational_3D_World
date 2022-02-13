@@ -27,31 +27,36 @@ class AppRepositoryImpl @Inject constructor(
         list.add(
             CollectionData(
                 1,
-                "https://thedispatch.blob.core.windows.net/thedispatchimages/2021/09/History.jpg"
+                "https://thedispatch.blob.core.windows.net/thedispatchimages/2021/09/History.jpg",
+                "History"
             )
         )
         list.add(
             CollectionData(
                 2,
-                "https://img3.goodfon.ru/wallpaper/nbig/d/f2/colorful-geometry-shapes-7654.jpg"
+                "https://img3.goodfon.ru/wallpaper/nbig/d/f2/colorful-geometry-shapes-7654.jpg",
+                "Geometry"
             )
         )
         list.add(
             CollectionData(
                 3,
-                "https://leverageedu.com/blog/wp-content/uploads/2020/01/Branches-of-Zoology.png"
+                "https://leverageedu.com/blog/wp-content/uploads/2020/01/Branches-of-Zoology.png",
+                "Zoology"
             )
         )
         list.add(
             CollectionData(
                 4,
-                "https://skyandtelescope.org/wp-content/uploads/Solar-system-NASA_S-630x338.jpg"
+                "https://skyandtelescope.org/wp-content/uploads/Solar-system-NASA_S-630x338.jpg",
+                "Astronomy"
             )
         )
         list.add(
             CollectionData(
                 5,
-                "http://musicedhighlights.files.wordpress.com/2011/03/2010-clip-art.gif"
+                "http://musicedhighlights.files.wordpress.com/2011/03/2010-clip-art.gif",
+                "Music"
             )
         )
         return list
@@ -67,9 +72,8 @@ class AppRepositoryImpl @Inject constructor(
                     val id = item["id"] as Long
                     val name = item["name"] as String
                     val type = item["type"] as Long
-                    val fileUrl = item["fileUrl"] as String
                     val image = item["image"] as String
-                    list.add(ObjectData(id, name, fileUrl, type, image))
+                    list.add(ObjectData(id, name, type, image))
                 }
                 successLoadListener?.invoke()
             }

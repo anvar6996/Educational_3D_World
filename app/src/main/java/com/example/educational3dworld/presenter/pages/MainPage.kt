@@ -34,11 +34,12 @@ class MainPage : Fragment(R.layout.page_main) {
         recykler.layoutManager = StaggeredGridLayoutManager(1, StaggeredGridLayoutManager.VERTICAL)
 
         adaptetColleaction.setListener {
-            viewModel.getModelsData(it)
+            viewModel.getModelsData(it+1)
         }
         viewModel.successGetListFlow.onEach {
             showToast(it.size.toString() + " firebase")
             recykler.adapter = ObjectAdapter()
+            recykler.layoutManager = StaggeredGridLayoutManager(1, StaggeredGridLayoutManager.VERTICAL)
             objectAdapter.submitList(it)
         }.launchIn(lifecycleScope)
 

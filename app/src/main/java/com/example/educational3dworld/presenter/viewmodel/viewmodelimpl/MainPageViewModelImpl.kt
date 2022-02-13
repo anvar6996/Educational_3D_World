@@ -16,8 +16,7 @@ import javax.inject.Inject
 @HiltViewModel
 class MainPageViewModelImpl @Inject constructor(
     private val repository: AppRepository
-) :
-    ViewModel(),
+) :ViewModel(),
     MainPageViewModel {
     override val errorFlow = eventValueFlow<String>()
     override val progressFlow = eventValueFlow<Boolean>()

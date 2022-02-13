@@ -31,6 +31,7 @@ class MainPage : Fragment(R.layout.page_main) {
 
 
         viewModel.successGetModelsFlow.onEach {
+            showToast(it.size.toString())
             adaptetColleaction.submitList(it)
         }
         viewModel.errorFlow.onEach {
